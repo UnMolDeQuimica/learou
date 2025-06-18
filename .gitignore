@@ -196,3 +196,7 @@ cython_debug/
 # Ignore node modules
 
 node_modules/
+
+# Ignore wagtail changes
+media/
+home/
