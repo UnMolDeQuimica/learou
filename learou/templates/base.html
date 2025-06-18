@@ -24,14 +24,17 @@
         {% endif %}
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/learou.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="h-screen bg-slate-300 dark:bg-slate-400">
+        <section class="container mx-auto flex flex-col items-center">
+
+        </section>
         {% wagtailuserbar %}
 
         {% block content %}{% endblock %}
