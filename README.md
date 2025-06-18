@@ -1,2 +1,3 @@
-# eenca
-CMS like tool with some obsidian capabilities
+# learou
+
+A Django based platform for tracking learning process
