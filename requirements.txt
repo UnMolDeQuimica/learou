@@ -5,6 +5,7 @@ certifi==2025.6.15
 charset-normalizer==3.4.2
 defusedxml==0.7.1
 Django==5.2.3
+django-extensions==4.1
 django-filter==25.1
 django-modelcluster==6.4
 django-permissionedforms==0.1

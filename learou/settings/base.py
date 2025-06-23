@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
-INSTALLED_APPS = [
+THIRD_PARTY_APPS = [
     "home",
     "search",
     "wagtail.contrib.forms",
@@ -46,7 +46,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
 ]
+
+LOCAL_APPS = [
+    "learou.app",
+]
+
+INSTALLED_APPS = THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -78,6 +85,8 @@ TEMPLATES = [
         },
     },
 ]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 WSGI_APPLICATION = "learou.wsgi.application"
 
