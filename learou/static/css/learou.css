@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
-    themes: emerald --default, night --prefersdark;
+    themes: cupcake --default, night --prefersdark;
 }
+
+html {
+    overflow-y: scroll;
+  }
