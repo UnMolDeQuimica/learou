@@ -5,219 +5,584 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='BibliographyType',
+            name="BibliographyType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Link',
+            name="Link",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('url', models.URLField(verbose_name='Link')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                ("url", models.URLField(verbose_name="Link")),
             ],
         ),
         migrations.CreateModel(
-            name='LinkType',
+            name="LinkType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='ProjectStatus',
+            name="ProjectStatus",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='ProjectType',
+            name="ProjectType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Created at')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "created_at",
+                    models.DateField(auto_now_add=True, verbose_name="Created at"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='TaskStatus',
+            name="TaskStatus",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='TaskType',
+            name="TaskType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('icon', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Image"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Bibliography',
+            name="Bibliography",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('publication_date', models.DateField(blank=True, null=True, verbose_name='Publication date')),
-                ('extra_data', models.TextField(blank=True, null=True, verbose_name='Extra data')),
-                ('authors', models.ManyToManyField(to='app.author', verbose_name='Authors')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "publication_date",
+                    models.DateField(
+                        blank=True, null=True, verbose_name="Publication date"
+                    ),
+                ),
+                (
+                    "extra_data",
+                    models.TextField(blank=True, null=True, verbose_name="Extra data"),
+                ),
+                (
+                    "authors",
+                    models.ManyToManyField(to="app.author", verbose_name="Authors"),
+                ),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateField(auto_now=True, verbose_name='Updated at')),
-                ('bibliography', models.ManyToManyField(to='app.bibliography', verbose_name='Bibliography')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('project_status', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.projectstatus', verbose_name='Project Status')),
-                ('project_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.projecttype', verbose_name='Project Type')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
-                ('tasks', models.ManyToManyField(to='app.task', verbose_name='Task')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "created_at",
+                    models.DateField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "bibliography",
+                    models.ManyToManyField(
+                        to="app.bibliography", verbose_name="Bibliography"
+                    ),
+                ),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "project_status",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app.projectstatus",
+                        verbose_name="Project Status",
+                    ),
+                ),
+                (
+                    "project_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app.projecttype",
+                        verbose_name="Project Type",
+                    ),
+                ),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
+                ("tasks", models.ManyToManyField(to="app.task", verbose_name="Task")),
             ],
         ),
         migrations.CreateModel(
-            name='Diary',
+            name="Diary",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateField(auto_now=True, verbose_name='Updated at')),
-                ('bibliography', models.ManyToManyField(to='app.bibliography', verbose_name='Bibliography')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('project', models.ManyToManyField(to='app.project', verbose_name='Project')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
-                ('tasks', models.ManyToManyField(to='app.task', verbose_name='Task')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "created_at",
+                    models.DateField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "bibliography",
+                    models.ManyToManyField(
+                        to="app.bibliography", verbose_name="Bibliography"
+                    ),
+                ),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "project",
+                    models.ManyToManyField(to="app.project", verbose_name="Project"),
+                ),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
+                ("tasks", models.ManyToManyField(to="app.task", verbose_name="Task")),
             ],
         ),
         migrations.CreateModel(
-            name='CheatSheet',
+            name="CheatSheet",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('bibliography', models.ManyToManyField(to='app.bibliography', verbose_name='Bibliography')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "bibliography",
+                    models.ManyToManyField(
+                        to="app.bibliography", verbose_name="Bibliography"
+                    ),
+                ),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='author',
-            name='review',
-            field=models.ManyToManyField(to='app.review', verbose_name='Review'),
+            model_name="author",
+            name="review",
+            field=models.ManyToManyField(to="app.review", verbose_name="Review"),
         ),
         migrations.CreateModel(
-            name='DiaryEntry',
+            name="DiaryEntry",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('created_at', models.DateField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateField(auto_now=True, verbose_name='Updated at')),
-                ('bibliography', models.ManyToManyField(to='app.bibliography', verbose_name='Bibliography')),
-                ('diary', models.ManyToManyField(to='app.diary', verbose_name='Diary')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('project', models.ManyToManyField(to='app.project', verbose_name='Project')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
-                ('tasks', models.ManyToManyField(to='app.task', verbose_name='Task')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "created_at",
+                    models.DateField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "bibliography",
+                    models.ManyToManyField(
+                        to="app.bibliography", verbose_name="Bibliography"
+                    ),
+                ),
+                ("diary", models.ManyToManyField(to="app.diary", verbose_name="Diary")),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "project",
+                    models.ManyToManyField(to="app.project", verbose_name="Project"),
+                ),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
+                ("tasks", models.ManyToManyField(to="app.task", verbose_name="Task")),
             ],
         ),
         migrations.AddField(
-            model_name='task',
-            name='status',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.taskstatus', verbose_name='Status'),
+            model_name="task",
+            name="status",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="app.taskstatus",
+                verbose_name="Status",
+            ),
         ),
         migrations.AddField(
-            model_name='task',
-            name='task_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.tasktype', verbose_name='Type'),
+            model_name="task",
+            name="task_type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="app.tasktype",
+                verbose_name="Type",
+            ),
         ),
         migrations.CreateModel(
-            name='Technology',
+            name="Technology",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='Name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('bibliography', models.ManyToManyField(to='app.bibliography', verbose_name='Bibliography')),
-                ('cheat_sheet', models.ManyToManyField(to='app.cheatsheet', verbose_name='Cheat Sheet')),
-                ('link', models.ManyToManyField(to='app.link', verbose_name='Link')),
-                ('review', models.ManyToManyField(to='app.review', verbose_name='Review')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, unique=True, verbose_name="Name"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "bibliography",
+                    models.ManyToManyField(
+                        to="app.bibliography", verbose_name="Bibliography"
+                    ),
+                ),
+                (
+                    "cheat_sheet",
+                    models.ManyToManyField(
+                        to="app.cheatsheet", verbose_name="Cheat Sheet"
+                    ),
+                ),
+                ("link", models.ManyToManyField(to="app.link", verbose_name="Link")),
+                (
+                    "review",
+                    models.ManyToManyField(to="app.review", verbose_name="Review"),
+                ),
             ],
         ),
     ]
