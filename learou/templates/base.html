@@ -31,19 +31,26 @@
         {% endblock %}
     </head>
 
-    <body class="h-screen bg-slate-300 dark:bg-slate-400">
-        <section class="container mx-auto flex flex-col items-center">
+    <body>
+        <div class="flex flex-col h-screen">
 
-        </section>
-        {% wagtailuserbar %}
+            {% include "header.html" %}
+            <section class="container mx-auto flex flex-col items-center prose flex-grow">
+                {% block content %}{% endblock %}
+            </section>
 
-        {% block content %}{% endblock %}
+            {# Global javascript #}
+            <script type="text/javascript" src="{% static 'js/learou.js' %}"></script>
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/learou.js' %}"></script>
+            {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+            {% endblock %}
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}
         {% endblock %}
+        </div>
+
+
     </body>
 </html>
