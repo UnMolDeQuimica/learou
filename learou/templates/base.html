@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
         <title>
             {% block title %}
             {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
@@ -31,19 +31,24 @@
         {% endblock %}
     </head>
 
-    <body class="h-screen bg-slate-300 dark:bg-slate-400">
-        <section class="container mx-auto flex flex-col items-center">
+    <body> 
+        <div class="flex flex-col h-screen">
 
-        </section>
-        {% wagtailuserbar %}
+            {% include "header.html" %}
+            <section class="container mx-auto flex flex-col items-center prose flex-grow">
+                {% block content %}{% endblock %}
+            </section>
 
-        {% block content %}{% endblock %}
+            {# Global javascript #}
+            <script type="text/javascript" src="{% static 'js/learou.js' %}"></script>
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/learou.js' %}"></script>
+            {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+            {% endblock %}
 
-        {% block extra_js %}
-        {# Override this in templates to add extra javascript #}
-        {% endblock %}
+            {% include "footer.html" %}
+        </div>
+
+
     </body>
 </html>
