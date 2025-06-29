@@ -35,6 +35,6 @@ urlpatterns = urlpatterns + [
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
-    path("", Home.as_view()),
-    path("features/", Features.as_view()),
+    path("", Home.as_view(), name="home"),
+    path("features/", Features.as_view(), name="features"),
 ]
