@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %} {% load i18n %}
+<div class="bg-accent mx-5 md:mx-15 p-5 pt-10 pb-10 rounded-xl">
+    <div class="flex-col pt-3">
+      <div>
+        <h1 class="text-6xl font-bold mb-2">{% trans "Features" %}</h1>
+      </div>
+  </div>
+</div>
+<div class="flex-col mx-5 md:mx-15 p-5 pt-10 pb-10 ">
+ <ul class="list bg-base-100 rounded-box shadow-md">
+   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Projects</li>
+     <li class="list-row"><a href="/api/project/">{% trans "Project" %}</a></li>
+     <li class="list-row"><a href="/api/project_type/">{% trans "Project Type" %}</a></li>
+     <li class="list-row"><a href="/api/project_status/">{% trans "Project Status" %}</a></li>
+     <li class="list-row"><a href="/api/technology/">{% trans "Technology" %}</a></li>
+   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Tasks</li>
+     <li class="list-row"><a href="/api/task/">{% trans "Task" %}</a></li>
+     <li class="list-row"><a href="/api/task_type/">{% trans "Task Type" %}</a></li>
+     <li class="list-row"><a href="/api/task_status/">{% trans "Task Status" %}</a></li>
+   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Bibliography</li>
+     <li class="list-row"><a href="/api/bibliography/">{% trans "Bibliography" %}</a></li>
+     <li class="list-row"><a href="/api/bibliography_type/">{% trans "Bibliography Type" %}</a></li>
+     <li class="list-row"><a href="/api/link/">{% trans "Link" %}</a></li>
+     <li class="list-row"><a href="/api/link_type/">{% trans "Link Type" %}</a></li>
+     <li class="list-row"><a href="/api/author/">{% trans "Author" %}</a></li>
+   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Progress</li>
+     <li class="list-row"><a href="/api/diary/">{% trans "Diary" %}</a></li>
+     <li class="list-row"><a href="/api/diary_entry/">{% trans "Diary Entry" %}</a></li>
+     <li class="list-row"><a href="/api/review/">{% trans "Review" %}</a></li>
+     <li class="list-row"><a href="/api/cheatsheet/">{% trans "Cheat Sheet" %}</a></li>
+</ul>
+</div>
+{% endblock content %}
