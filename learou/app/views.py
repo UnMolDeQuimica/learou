@@ -525,3 +525,136 @@ class TaskTypeDetailView(BaseTaskTypeViewMixin, HTMXTemplateMixin, DetailView): 
 class TaskStatusDetailView(BaseTaskStatusViewMixin, HTMXTemplateMixin, DetailView): ...
 
 
+# ------------------
+# CREATE VIEWS
+# ------------------
+
+
+class TaskTypeCreateView(
+    BaseTaskTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.TaskTypeForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class TaskStatusCreateView(
+    BaseTaskStatusViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.TaskStatusForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class TaskCreateView(
+    BaseTaskViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.TaskForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class LinkTypeCreateView(
+    BaseLinkTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.LinkTypeForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class LinkCreateView(
+    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.LinkForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class ReviewCreateView(
+    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.ReviewForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class AuthorCreateView(
+    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.AuthorForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class BibliographyTypeCreateView(
+    BaseBibliographyTypeViewMixin, HTMXTemplateMixin, CreateView
+):
+    form_class = forms.BibliographyTypeForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class BibliographyCreateView(
+    BaseBibliographyViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.BibliographyForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class CheatSheetCreateView(
+    BaseCheatSheetViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.CheatSheetForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class TechnologyCreateView(
+    BaseTechnologyViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.TechnologyForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class ProjectTypeCreateView(
+    BaseProjectTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.ProjectTypeForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class ProjectStatusCreateView(
+    BaseProjectStatusViewMixin, HTMXTemplateMixin, CreateView
+):
+    form_class = forms.ProjectStatusForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class ProjectCreateView(
+    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.ProjectForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_fields.html"
+
+
+class DiaryCreateView(
+    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.DiaryForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class DiaryEntryCreateView(
+    BaseDiaryEntryViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.DiaryEntryForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
