@@ -8,7 +8,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
-from learou.views import Home
+from learou.views import Home, Features
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
@@ -35,5 +35,6 @@ urlpatterns = urlpatterns + [
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
-    path("", Home.as_view())
+    path("", Home.as_view()),
+    path("features/", Features.as_view()),
 ]
