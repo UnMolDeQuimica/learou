@@ -1,4 +1,3 @@
-from django.views.generic import ListView
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
@@ -658,3 +657,54 @@ class DiaryEntryCreateView(
     htmx_template_name = "app/partials/base_form.html"
 
 
+# ------------------
+# DELETE VIEWS
+# ------------------
+
+
+class TaskTypeDeleteView(BaseTaskTypeViewMixin, DeleteViewMixin): ...
+
+
+class TaskStatusDeleteView(BaseTaskStatusViewMixin, DeleteViewMixin): ...
+
+
+class TaskDeleteView(BaseTaskViewMixin, DeleteViewMixin): ...
+
+
+class LinkTypeDeleteView(BaseLinkTypeViewMixin, DeleteViewMixin): ...
+
+
+class LinkDeleteView(BaseLinkViewMixin, DeleteViewMixin): ...
+
+
+class ReviewDeleteView(BaseReviewViewMixin, DeleteViewMixin): ...
+
+
+class AuthorDeleteView(BaseAuthorViewMixin, DeleteViewMixin): ...
+
+
+class BibliographyTypeDeleteView(BaseBibliographyTypeViewMixin, DeleteViewMixin): ...
+
+
+class BibliographyDeleteView(BaseBibliographyViewMixin, DeleteViewMixin): ...
+
+
+class CheatSheetDeleteView(BaseCheatSheetViewMixin, DeleteViewMixin): ...
+
+
+class TechnologyDeleteView(BaseTechnologyViewMixin, DeleteViewMixin): ...
+
+
+class ProjectTypeDeleteView(BaseProjectTypeViewMixin, DeleteViewMixin): ...
+
+
+class ProjectStatusDeleteView(BaseProjectStatusViewMixin, DeleteViewMixin): ...
+
+
+class ProjectDeleteView(BaseProjectViewMixin, DeleteViewMixin): ...
+
+
+class DiaryDeleteView(BaseDiaryViewMixin, DeleteViewMixin): ...
+
+
+class DiaryEntryDeleteView(BaseDiaryEntryViewMixin, DeleteViewMixin): ...
