@@ -427,3 +427,101 @@ class TaskStatusUpdateView(
     template_name = "app/partials/base_fields.html"
     htmx_template_name = "app/partials/base_form.html"
 
+
+# ------------------
+# DETAIL VIEWS
+# ------------------
+
+
+class ProjectTypeDetailView(
+    BaseProjectTypeViewMixin, HTMXTemplateMixin, DetailView
+): ...
+
+
+class TaskDetailView(BaseTaskViewMixin, HTMXTemplateMixin, DetailView): ...
+
+
+class LinkTypeDetailView(
+    BaseLinkTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
+): ...
+
+
+class LinkDetailView(
+    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+): ...
+
+
+class ReviewDetailView(
+    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+): ...
+
+
+class AuthorDetailView(
+    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+): ...
+
+
+class BibliographyTypeDetailView(
+    BaseBibliographyTypeViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+): ...
+
+
+class BibliographyDetailView(
+    BaseBibliographyViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+): ...
+
+
+class CheatSheetDetailView(
+    BaseCheatSheetViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    DetailView,
+): ...
+
+
+class TechnologyDetailView(
+    BaseTechnologyViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+): ...
+
+
+class ProjectStatusDetailView(
+    BaseProjectStatusViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+): ...
+
+
+class ProjectDetailView(
+    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+): ...
+
+
+class DiaryDetailView(
+    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+): ...
+
+
+class DiaryEntryDetailView(
+    BaseDiaryEntryViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    DetailView,
+): ...
+
+
+class TaskTypeDetailView(BaseTaskTypeViewMixin, HTMXTemplateMixin, DetailView): ...
+
+
+class TaskStatusDetailView(BaseTaskStatusViewMixin, HTMXTemplateMixin, DetailView): ...
+
+
