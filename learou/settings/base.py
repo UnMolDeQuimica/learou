@@ -46,7 +46,10 @@ THIRD_PARTY_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_htmx",
     "rest_framework",
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 LOCAL_APPS = [
@@ -64,9 +67,14 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "learou.urls"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 TEMPLATES = [
     {
