@@ -277,3 +277,153 @@ class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView):
     model_name = "Task Status"
 
 
+# ------------------
+# UPDATE VIEWS
+# ------------------
+
+
+class ProjectTypeUpdateView(
+    BaseProjectTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.ProjectTypeForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class TaskUpdateView(
+    BaseTaskViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.TaskForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class LinkTypeUpdateView(
+    BaseLinkTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.LinkForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class LinkUpdateView(
+    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.LinkForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class ReviewUpdateView(
+    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.ReviewForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class AuthorUpdateView(
+    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.AuthorForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class BibliographyTypeUpdateView(
+    BaseBibliographyTypeViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.BibliographyForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class BibliographyUpdateView(
+    BaseBibliographyViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.BibliographyForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class CheatSheetUpdateView(
+    BaseCheatSheetViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.CheatSheetForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class TechnologyUpdateView(
+    BaseTechnologyViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.TechnologyForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class ProjectStatusUpdateView(
+    BaseProjectStatusViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.ProjectStatusForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class ProjectUpdateView(
+    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.ProjectForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class DiaryUpdateView(
+    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.DiaryForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class DiaryEntryUpdateView(
+    BaseDiaryEntryViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
+):
+    form_class = forms.DiaryEntryForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form."
+
+
+class TaskTypeUpdateView(
+    BaseTaskTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.TaskTypeForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
+class TaskStatusUpdateView(
+    BaseTaskStatusViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.TaskStatusForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
