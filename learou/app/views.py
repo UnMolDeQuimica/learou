@@ -123,11 +123,88 @@ class DeleteViewMixin(PermissionsMixin, HTMXTemplateMixin, DeleteView):
         return HttpResponse(headers={"HX-Redirect": self.get_success_url()})
 
 
+# ------------------
+# BASE VIEWS
+# ------------------
 
 
-class DiaryListView(ListView):
-    queryset = models.Diary.objects.all()
+class BaseProjectTypeViewMixin(BaseViewMixin):
+    model = models.ProjectType
+    base_url = "project_type"
 
 
-class DiaryEntryListView(ListView):
-    queryset = models.DiaryEntry.objects.all()
+class BaseTaskViewMixin(BaseViewMixin):
+    model = models.Task
+    base_url = "task"
+
+
+class BaseLinkTypeViewMixin(BaseViewMixin):
+    model = models.LinkType
+    base_url = "link_type"
+
+
+class BaseLinkViewMixin(BaseViewMixin):
+    model = models.Link
+    base_url = "link"
+
+
+class BaseReviewViewMixin(BaseViewMixin):
+    model = models.Review
+    base_url = "review"
+
+
+class BaseAuthorViewMixin(BaseViewMixin):
+    model = models.Author
+    base_url = "author"
+
+
+class BaseBibliographyTypeViewMixin(BaseViewMixin):
+    model = models.BibliographyType
+    base_url = "bibliography_type"
+
+
+class BaseBibliographyViewMixin(BaseViewMixin):
+    model = models.Bibliography
+    base_url = "bibliography"
+
+
+class BaseCheatSheetViewMixin(BaseViewMixin):
+    model = models.CheatSheet
+    base_url = "cheatsheet"
+
+
+class BaseTechnologyViewMixin(BaseViewMixin):
+    model = models.Technology
+    base_url = "technology"
+
+
+class BaseProjectViewMixin(BaseViewMixin):
+    model = models.Project
+    base_url = "project"
+
+
+class BaseProjectStatusViewMixin(BaseViewMixin):
+    model = models.ProjectStatus
+    base_url = "project_status"
+
+
+class BaseDiaryViewMixin(BaseViewMixin):
+    model = models.Diary
+    base_url = "diary"
+
+
+class BaseDiaryEntryViewMixin(BaseViewMixin):
+    model = models.DiaryEntry
+    base_url = "diary_entry"
+
+
+class BaseTaskTypeViewMixin(BaseViewMixin):
+    model = models.TaskType
+    base_url = "task_type"
+
+
+class BaseTaskStatusViewMixin(BaseViewMixin):
+    model = models.TaskStatus
+    base_url = "task_status"
+
+
