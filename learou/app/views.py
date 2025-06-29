@@ -208,3 +208,72 @@ class BaseTaskStatusViewMixin(BaseViewMixin):
     base_url = "task_status"
 
 
+# ------------------
+# LIST VIEWS
+# ------------------
+
+
+class TaskListView(BaseTaskViewMixin, GenericListView):
+    model_name = "Tasks"
+
+
+class LinkTypeListView(BaseLinkTypeViewMixin, GenericListView):
+    model_name = "Link Type"
+
+
+class LinkListView(BaseLinkViewMixin, GenericListView):
+    model_name = "Link"
+
+
+class ReviewListView(BaseReviewViewMixin, GenericListView):
+    model_name = "Review"
+
+
+class AuthorListView(BaseAuthorViewMixin, GenericListView):
+    model_name = "Author"
+
+
+class BibliographyTypeListView(BaseBibliographyTypeViewMixin, GenericListView):
+    model_name = "Bibliography Type"
+
+
+class BibliographyListView(BaseBibliographyViewMixin, GenericListView):
+    model_name = "Bibliography"
+
+
+class CheatSheetListView(BaseCheatSheetViewMixin, GenericListView):
+    model_name = "Cheat Sheet"
+
+
+class TechnologyListView(BaseTechnologyViewMixin, GenericListView):
+    model_name = "Technology"
+
+
+class ProjectTypeListView(BaseProjectTypeViewMixin, GenericListView):
+    model_name = "Project Type"
+
+
+class ProjectStatusListView(BaseProjectStatusViewMixin, GenericListView):
+    model_name = "Project Status"
+
+
+class ProjectListView(BaseProjectViewMixin, GenericListView):
+    model_name = "Project"
+
+
+class DiaryListView(BaseDiaryViewMixin, GenericListView):
+    model_name = "Diary"
+
+
+class DiaryEntryListView(BaseDiaryEntryViewMixin, GenericListView):
+    model_name = "Diary Entry"
+
+
+class TaskTypeListView(BaseTaskTypeViewMixin, GenericListView):
+    model_name = "Task Type"
+
+
+class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView):
+    model_name = "Task Status"
+
+
