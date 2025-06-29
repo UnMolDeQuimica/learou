@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl">
+    <div class="flex-col pt-3">
+      <div>
+          <h1 class="text-3xl font-bold mb-10">{{ model_name }}</h1>  
+          <button class="btn btn-primary" onclick="window.location.href='{% url create_url %}'">{% trans "Add" %}</button>
+          {% for object in objects %}
+          {% if object %}
+            <h2 class="text-2xl font-bold mb-2">
+              <a href="{% url detail_url object.pk %}">{{ object.name }}</a>
+            </h2>
+            <p>
+              {{ object.description }}
+            </p>
+            <div class="divider"></div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}
