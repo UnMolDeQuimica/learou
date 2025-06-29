@@ -1,0 +1,34 @@
+volumes:
+  learou_local_redis_data: {}
+
+services:
+  tailwind:
+    build:
+      context: .
+      dockerfile: ./compose/local/tailwind/Dockerfile
+    image: learou_local_tailwind
+    container_name: learou_local_tailwind
+    volumes:
+      - .:/app:z
+
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: learou_local_django
+    container_name: learou_local_django
+    depends_on:
+      - redis
+    volumes:
+      - .:/app:z
+    env_file:
+      ./.envs/.local/.django
+    ports:
+      - '8000:8000'
+
+  redis:
+    image: docker.io/redis:6
+    container_name: learou_local_redis
+    volumes:
+      - learou_local_redis_data:/data
+
