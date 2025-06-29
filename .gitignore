@@ -200,3 +200,11 @@ node_modules/
 # Ignore wagtail changes
 media/
 home/
+
+# Ignore css files
+static/*
+static/css/*
+!static/css/learou.css
+
+# Ignore docker files
+*.django
