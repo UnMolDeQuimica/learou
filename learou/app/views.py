@@ -58,6 +58,7 @@ class BaseViewMixin:
     create_url = f"{base_url}_create"
     delete_url = f"{base_url}_delete"
     success_url = detail_url
+    model_name = ""
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,6 +67,7 @@ class BaseViewMixin:
         context["detail_url"] = f"{self.base_url}_detail"
         context["create_url"] = f"{self.base_url}_create"
         context["delete_url"] = f"{self.base_url}_delete"
+        context["model_name"] = self.model_name
         return context
 
 
@@ -130,81 +132,97 @@ class DeleteViewMixin(PermissionsMixin, HTMXTemplateMixin, DeleteView):
 class BaseProjectTypeViewMixin(BaseViewMixin):
     model = models.ProjectType
     base_url = "project_type"
+    model_name = "Tasks"
 
 
 class BaseTaskViewMixin(BaseViewMixin):
     model = models.Task
     base_url = "task"
+    model_name = "Link Type"
 
 
 class BaseLinkTypeViewMixin(BaseViewMixin):
     model = models.LinkType
     base_url = "link_type"
+    model_name = "Link"
 
 
 class BaseLinkViewMixin(BaseViewMixin):
     model = models.Link
     base_url = "link"
+    model_name = "Link"
 
 
 class BaseReviewViewMixin(BaseViewMixin):
     model = models.Review
     base_url = "review"
+    model_name = "Review"
 
 
 class BaseAuthorViewMixin(BaseViewMixin):
     model = models.Author
     base_url = "author"
+    model_name = "Author"
 
 
 class BaseBibliographyTypeViewMixin(BaseViewMixin):
     model = models.BibliographyType
     base_url = "bibliography_type"
+    model_name = "Bibliography Type"
 
 
 class BaseBibliographyViewMixin(BaseViewMixin):
     model = models.Bibliography
     base_url = "bibliography"
+    model_name = "Bibliography"
 
 
 class BaseCheatSheetViewMixin(BaseViewMixin):
     model = models.CheatSheet
     base_url = "cheatsheet"
+    model_name = "Cheat Sheet"
 
 
 class BaseTechnologyViewMixin(BaseViewMixin):
     model = models.Technology
     base_url = "technology"
+    model_name = "Technology"
 
 
 class BaseProjectViewMixin(BaseViewMixin):
     model = models.Project
     base_url = "project"
+    model_name = "Project"
 
 
 class BaseProjectStatusViewMixin(BaseViewMixin):
     model = models.ProjectStatus
     base_url = "project_status"
+    model_name = "Project Status"
 
 
 class BaseDiaryViewMixin(BaseViewMixin):
     model = models.Diary
     base_url = "diary"
+    model_name = "Diary"
 
 
 class BaseDiaryEntryViewMixin(BaseViewMixin):
     model = models.DiaryEntry
     base_url = "diary_entry"
+    model_name = "Diary Entry"
 
 
 class BaseTaskTypeViewMixin(BaseViewMixin):
     model = models.TaskType
     base_url = "task_type"
+    model_name = "Task Type"
 
 
 class BaseTaskStatusViewMixin(BaseViewMixin):
     model = models.TaskStatus
     base_url = "task_status"
+    model_name = "Task Status"
 
 
 # ------------------
@@ -212,68 +230,52 @@ class BaseTaskStatusViewMixin(BaseViewMixin):
 # ------------------
 
 
-class TaskListView(BaseTaskViewMixin, GenericListView):
-    model_name = "Tasks"
+class TaskListView(BaseTaskViewMixin, GenericListView): ...
 
 
-class LinkTypeListView(BaseLinkTypeViewMixin, GenericListView):
-    model_name = "Link Type"
+class LinkTypeListView(BaseLinkTypeViewMixin, GenericListView): ...
 
 
-class LinkListView(BaseLinkViewMixin, GenericListView):
-    model_name = "Link"
+class LinkListView(BaseLinkViewMixin, GenericListView): ...
 
 
-class ReviewListView(BaseReviewViewMixin, GenericListView):
-    model_name = "Review"
+class ReviewListView(BaseReviewViewMixin, GenericListView): ...
 
 
-class AuthorListView(BaseAuthorViewMixin, GenericListView):
-    model_name = "Author"
+class AuthorListView(BaseAuthorViewMixin, GenericListView): ...
 
 
-class BibliographyTypeListView(BaseBibliographyTypeViewMixin, GenericListView):
-    model_name = "Bibliography Type"
+class BibliographyTypeListView(BaseBibliographyTypeViewMixin, GenericListView): ...
 
 
-class BibliographyListView(BaseBibliographyViewMixin, GenericListView):
-    model_name = "Bibliography"
+class BibliographyListView(BaseBibliographyViewMixin, GenericListView): ...
 
 
-class CheatSheetListView(BaseCheatSheetViewMixin, GenericListView):
-    model_name = "Cheat Sheet"
+class CheatSheetListView(BaseCheatSheetViewMixin, GenericListView): ...
 
 
-class TechnologyListView(BaseTechnologyViewMixin, GenericListView):
-    model_name = "Technology"
+class TechnologyListView(BaseTechnologyViewMixin, GenericListView): ...
 
 
-class ProjectTypeListView(BaseProjectTypeViewMixin, GenericListView):
-    model_name = "Project Type"
+class ProjectTypeListView(BaseProjectTypeViewMixin, GenericListView): ...
 
 
-class ProjectStatusListView(BaseProjectStatusViewMixin, GenericListView):
-    model_name = "Project Status"
+class ProjectStatusListView(BaseProjectStatusViewMixin, GenericListView): ...
 
 
-class ProjectListView(BaseProjectViewMixin, GenericListView):
-    model_name = "Project"
+class ProjectListView(BaseProjectViewMixin, GenericListView): ...
 
 
-class DiaryListView(BaseDiaryViewMixin, GenericListView):
-    model_name = "Diary"
+class DiaryListView(BaseDiaryViewMixin, GenericListView): ...
 
 
-class DiaryEntryListView(BaseDiaryEntryViewMixin, GenericListView):
-    model_name = "Diary Entry"
+class DiaryEntryListView(BaseDiaryEntryViewMixin, GenericListView): ...
 
 
-class TaskTypeListView(BaseTaskTypeViewMixin, GenericListView):
-    model_name = "Task Type"
+class TaskTypeListView(BaseTaskTypeViewMixin, GenericListView): ...
 
 
-class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView):
-    model_name = "Task Status"
+class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView): ...
 
 
 # ------------------
