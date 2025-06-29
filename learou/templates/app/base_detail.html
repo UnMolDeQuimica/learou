@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<a href="{% url list_url %}"><h3>{% trans 'Back to list'%}</h3></a>
+  {% include "app/partials/base_fields.html" %}
+{% endblock content %}

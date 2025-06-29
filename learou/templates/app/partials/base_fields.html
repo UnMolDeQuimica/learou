@@ -1,0 +1,31 @@
+
+<div class="max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl" id="object-fields">
+  <div>
+    <h1 class="text-3xl font-bold mb-10">{{ object.name }}</h1>
+    <h2 class="text-2xl font-bold">{{ object.description }}</h2>
+
+    {% if user.is_authenticated %}
+    {% if object %}
+    <button class="btn btn-primary"
+      hx-get="{% url update_url object.pk %}"
+      hx-trigger="click"
+      hx-target="#object-fields"
+      hx-swap="outerHTML"
+      >Edit</button>
+    <button class="btn btn-error"
+      hx-get="{% url delete_url object.pk %}"
+      hx-trigger="click"
+      hx-target="#object-fields"
+      hx-swap="outerHTML"
+      >Delete</button>
+    {% else %}
+  <div id="object-fields"
+    hx-trigger="load"
+      hx-get="{% url create_url %}"
+      hx-redirect="true"
+    >
+   </div> 
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
