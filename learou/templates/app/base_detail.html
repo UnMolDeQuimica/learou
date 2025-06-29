@@ -2,6 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-<a href="{% url list_url %}"><h3>{% trans 'Back to list'%}</h3></a>
+
+{% block breadcrumbs %}
+<div class="breadcrumbs text-sm max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl">
+  <ul>
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="home" breadcrumb_name="Home" %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="features" breadcrumb_name="Features" %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=list_url breadcrumb_name=model_name %}
+    {% if object %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=detail_url breadcrumb_url_parameter=object.pk breadcrumb_name=object.name %}
+    {% else %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=detail_url breadcrumb_url_parameter=object.pk breadcrumb_name=object.name %}
+    {% endif %}
+  </ul>
+</div>
+{% endblock breadcrumbs %}
   {% include "app/partials/base_fields.html" %}
 {% endblock content %}
