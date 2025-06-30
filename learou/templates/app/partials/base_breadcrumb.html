@@ -1,21 +1,12 @@
 
+
+{% load heroicons %}
 <li>
   {% if breadcrumb_url_parameter %}
   <a href="{% url breadcrumb_url breadcrumb_url_parameter %}">
   {% else %}
   <a href="{% url breadcrumb_url %}">
   {% endif %}
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      class="h-4 w-4 stroke-current">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d={{ svg_path|default:'"M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"' }}></path>
-    </svg>
-    {{ breadcrumb_name }}
+      {% heroicon_outline icon %}  {{ breadcrumb_name }}
   </a>
 </li>

@@ -6,13 +6,13 @@
 {% block breadcrumbs %}
 <div class="breadcrumbs text-sm max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl">
   <ul>
-    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="home" breadcrumb_name="Home" svg_path='"m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"' %}
-    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="features" breadcrumb_name="Features" svg_path='"M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"'%}
-    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=list_url breadcrumb_name=model_name %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="home" breadcrumb_name="Home" icon="home" %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="features" breadcrumb_name="Features" icon="light-bulb" %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=list_url breadcrumb_name=model_name icon="swatch" %}
     {% if object %}
-    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=detail_url breadcrumb_url_parameter=object.pk breadcrumb_name=object.name %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=detail_url breadcrumb_url_parameter=object.pk breadcrumb_name=object.name icon="cube" %}
     {% else %}
-    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=list_url breadcrumb_name="Create" %}
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url=list_url breadcrumb_name="Create" icon="document-plus" %}
     {% endif %}
   </ul>
 </div>
