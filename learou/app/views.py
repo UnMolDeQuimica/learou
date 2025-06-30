@@ -159,13 +159,13 @@ class BaseProjectTypeViewMixin(BaseViewMixin):
 class BaseTaskViewMixin(BaseViewMixin):
     model = models.Task
     base_url = "task"
-    model_name = "Link Type"
+    model_name = "Task"
 
 
 class BaseLinkTypeViewMixin(BaseViewMixin):
     model = models.LinkType
     base_url = "link_type"
-    model_name = "Link"
+    model_name = "Link Type"
 
 
 class BaseLinkViewMixin(BaseViewMixin):
