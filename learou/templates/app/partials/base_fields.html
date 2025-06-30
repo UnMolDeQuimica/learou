@@ -3,7 +3,10 @@
   <div>
     <h1 class="text-3xl font-bold mb-10">{{ object.name }}</h1>
     <h2 class="text-2xl font-bold">{{ object.description }}</h2>
-
+    {% for field, value in model_fields.items %}
+    <h3 class="text-2xl font-bold">{{ field }}</h3>
+    <p>{{ value }}</p>
+    {% endfor %}
     {% if user.is_authenticated %}
     {% if object %}
     <button class="btn btn-primary"
