@@ -469,17 +469,17 @@ class LinkTypeDetailView(
 
 
 class LinkDetailView(
-    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class ReviewDetailView(
-    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class AuthorDetailView(
-    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
@@ -487,7 +487,7 @@ class BibliographyTypeDetailView(
     BaseBibliographyTypeViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -495,7 +495,7 @@ class BibliographyDetailView(
     BaseBibliographyViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -511,7 +511,7 @@ class TechnologyDetailView(
     BaseTechnologyViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -519,17 +519,17 @@ class ProjectStatusDetailView(
     BaseProjectStatusViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
 class ProjectDetailView(
-    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class DiaryDetailView(
-    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
