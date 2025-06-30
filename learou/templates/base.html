@@ -30,9 +30,9 @@
         {% endblock %}
     </head>
 
-    <body> 
+    <body class="min-h-screen flex flex-col" >
       {% include "header.html" %}
-      <section class="mx-auto pt-10 h-screen">
+      <section class="flex-1  pt-10 min-h-screen">
           {% block content %}{% endblock %}
       </section>
 
