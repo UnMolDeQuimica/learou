@@ -49,6 +49,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "crispy_forms",
     "crispy_tailwind",
+    "django_extensions",
 ]
 
 LOCAL_APPS = [

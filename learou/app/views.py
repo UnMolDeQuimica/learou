@@ -6,10 +6,8 @@ from django.views.generic import (
     DeleteView,
     ListView,
     DetailView,
-    FormView,
     UpdateView,
 )
-from django.contrib import messages
 
 from learou.app import models, forms
 
@@ -60,6 +58,26 @@ class BaseViewMixin:
     success_url = detail_url
     model_name = ""
 
+    EXCLUDED_FIELDS = ["id", "name", "description"]
+
+    def get_all_fields(self):
+        if not getattr(self, "object", None):
+            return
+
+        model_fields = {}
+        for field in self.model._meta.fields:
+            if field.name in self.EXCLUDED_FIELDS:
+                continue
+
+            if field.many_to_one or field.one_to_one:
+                model_fields[field.verbose_name] = getattr(self.object, field.name, "-")
+            else:
+                model_fields[field.verbose_name] = (
+                    field.value_from_object(self.object) or "-"
+                )
+
+        return model_fields
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["list_url"] = f"{self.base_url}_list"
@@ -68,6 +86,9 @@ class BaseViewMixin:
         context["create_url"] = f"{self.base_url}_create"
         context["delete_url"] = f"{self.base_url}_delete"
         context["model_name"] = self.model_name
+        model_fields = self.get_all_fields()
+        if model_fields:
+            context["model_fields"] = model_fields
         return context
 
 
@@ -138,13 +159,13 @@ class BaseProjectTypeViewMixin(BaseViewMixin):
 class BaseTaskViewMixin(BaseViewMixin):
     model = models.Task
     base_url = "task"
-    model_name = "Link Type"
+    model_name = "Task"
 
 
 class BaseLinkTypeViewMixin(BaseViewMixin):
     model = models.LinkType
     base_url = "link_type"
-    model_name = "Link"
+    model_name = "Link Type"
 
 
 class BaseLinkViewMixin(BaseViewMixin):
@@ -448,17 +469,17 @@ class LinkTypeDetailView(
 
 
 class LinkDetailView(
-    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseLinkViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class ReviewDetailView(
-    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseReviewViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class AuthorDetailView(
-    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseAuthorViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
@@ -466,7 +487,7 @@ class BibliographyTypeDetailView(
     BaseBibliographyTypeViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -474,7 +495,7 @@ class BibliographyDetailView(
     BaseBibliographyViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -490,7 +511,7 @@ class TechnologyDetailView(
     BaseTechnologyViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
@@ -498,17 +519,17 @@ class ProjectStatusDetailView(
     BaseProjectStatusViewMixin,
     HTMXTemplateMixin,
     PermissionsMixin,
-    UpdateView,
+    DetailView,
 ): ...
 
 
 class ProjectDetailView(
-    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseProjectViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
 class DiaryDetailView(
-    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseDiaryViewMixin, HTMXTemplateMixin, PermissionsMixin, DetailView
 ): ...
 
 
@@ -628,7 +649,7 @@ class ProjectTypeCreateView(
 
 
 class ProjectStatusCreateView(
-    BaseProjectStatusViewMixin, HTMXTemplateMixin, CreateView
+    BaseProjectStatusViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
 ):
     form_class = forms.ProjectStatusForm
     template_name = "app/base_detail.html"
@@ -640,7 +661,7 @@ class ProjectCreateView(
 ):
     form_class = forms.ProjectForm
     template_name = "app/base_detail.html"
-    htmx_template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
 
 
 class DiaryCreateView(
