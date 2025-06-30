@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_tailwind",
     "django_extensions",
+    "heroicons",
 ]
 
 LOCAL_APPS = [
