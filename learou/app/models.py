@@ -16,9 +16,18 @@ class AbstractType(models.Model):
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     icon = models.ImageField(verbose_name=_("Image"), blank=True, null=True)
+    model_custom_name = models.CharField(
+        verbose_name=_("Model custom name"), blank=True
+    )
 
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+        if not self.model_custom_name:
+            self.name = self.__class__.__name__
+
+        super().save(*args, **kwargs)
 
 
 class TaskType(AbstractType):
