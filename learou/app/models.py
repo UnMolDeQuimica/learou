@@ -120,7 +120,7 @@ class Author(AbstractType):
     """Tracks the authors of a bibliography"""
 
     ...
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
 
 
 class BibliographyType(AbstractType):
@@ -140,13 +140,13 @@ class Bibliography(models.Model):
         verbose_name=_("Name"), max_length=255, blank=False, unique=True
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
-    authors = models.ManyToManyField(Author, verbose_name=_("Authors"))
+    authors = models.ManyToManyField(Author, verbose_name=_("Authors"), blank=True)
     publication_date = models.DateField(
         verbose_name=_("Publication date"), blank=True, null=True
     )
     extra_data = models.TextField(verbose_name=_("Extra data"), blank=True, null=True)
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
 
     def __str__(self):
         return str(self.name)
@@ -157,9 +157,11 @@ class CheatSheet(models.Model):
         verbose_name=_("Name"), max_length=255, blank=False, unique=True
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
-    bibliography = models.ManyToManyField(Bibliography, verbose_name=_("Bibliography"))
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
+    bibliography = models.ManyToManyField(
+        Bibliography, verbose_name=_("Bibliography"), blank=True
+    )
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
 
 
 class Technology(models.Model):
@@ -171,10 +173,14 @@ class Technology(models.Model):
         verbose_name=_("Name"), max_length=255, blank=False, unique=True
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
-    bibliography = models.ManyToManyField(Bibliography, verbose_name=_("Bibliography"))
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
-    cheat_sheet = models.ManyToManyField(CheatSheet, verbose_name=_("Cheat Sheet"))
+    bibliography = models.ManyToManyField(
+        Bibliography, verbose_name=_("Bibliography"), blank=True
+    )
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
+    cheat_sheet = models.ManyToManyField(
+        CheatSheet, verbose_name=_("Cheat Sheet"), blank=True
+    )
 
     def __str__(self):
         return str(self.name)
@@ -192,15 +198,23 @@ class Project(models.Model):
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     project_type = models.ForeignKey(
-        ProjectType, verbose_name=_("Project Type"), on_delete=models.CASCADE
+        ProjectType,
+        verbose_name=_("Project Type"),
+        on_delete=models.CASCADE,
+        blank=True,
     )
     project_status = models.ForeignKey(
-        ProjectStatus, verbose_name=_("Project Status"), on_delete=models.CASCADE
+        ProjectStatus,
+        verbose_name=_("Project Status"),
+        on_delete=models.CASCADE,
+        blank=True,
     )
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
-    bibliography = models.ManyToManyField(Bibliography, verbose_name=_("Bibliography"))
-    tasks = models.ManyToManyField(Task, verbose_name=_("Task"))
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
+    bibliography = models.ManyToManyField(
+        Bibliography, verbose_name=_("Bibliography"), blank=True
+    )
+    tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
     updated_at = models.DateField(verbose_name=_("Updated at"), auto_now=True)
 
@@ -217,11 +231,13 @@ class Diary(models.Model):
         verbose_name=_("Name"), max_length=255, blank=False, unique=True
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
-    bibliography = models.ManyToManyField(Bibliography, verbose_name=_("Bibliography"))
-    tasks = models.ManyToManyField(Task, verbose_name=_("Task"))
-    project = models.ManyToManyField(Project, verbose_name=_("Project"))
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
+    bibliography = models.ManyToManyField(
+        Bibliography, verbose_name=_("Bibliography"), blank=True
+    )
+    tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
+    project = models.ManyToManyField(Project, verbose_name=_("Project"), blank=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
     updated_at = models.DateField(verbose_name=_("Updated at"), auto_now=True)
 
@@ -238,12 +254,14 @@ class DiaryEntry(models.Model):
         verbose_name=_("Name"), max_length=255, blank=False, unique=True
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
-    diary = models.ManyToManyField(Diary, verbose_name=_("Diary"))
-    review = models.ManyToManyField(Review, verbose_name=_("Review"))
-    link = models.ManyToManyField(Link, verbose_name=_("Link"))
-    bibliography = models.ManyToManyField(Bibliography, verbose_name=_("Bibliography"))
-    tasks = models.ManyToManyField(Task, verbose_name=_("Task"))
-    project = models.ManyToManyField(Project, verbose_name=_("Project"))
+    diary = models.ManyToManyField(Diary, verbose_name=_("Diary"), blank=True)
+    review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
+    link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
+    bibliography = models.ManyToManyField(
+        Bibliography, verbose_name=_("Bibliography"), blank=True
+    )
+    tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
+    project = models.ManyToManyField(Project, verbose_name=_("Project"), blank=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
     updated_at = models.DateField(verbose_name=_("Updated at"), auto_now=True)
 
