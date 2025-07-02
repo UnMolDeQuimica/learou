@@ -46,15 +46,11 @@ class TaskStatus(AbstractType):
     ...
 
 
-class Task(models.Model):
+class Task(AbstractType):
     """
     Adds tasks to a different project, making it easy to track it's progress
     """
 
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     # TODO: Think if I need to add a default value to this
     # See: https://www.geeksforgeeks.org/python/setting-default-value-for-foreign-key-attribute-in-django/
     status = models.ForeignKey(
@@ -84,32 +80,24 @@ class LinkType(AbstractType):
     ...
 
 
-class Link(models.Model):
+class Link(AbstractType):
     """
     Stores url data
     """
 
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     url = models.URLField(verbose_name=_("Link"), blank=False, unique=False)
 
     def __str__(self):
         return str(self.name)
 
 
-class Review(models.Model):
+class Review(AbstractType):
     """
     When some bibliography/author/technology, etc. is checked, a review of the bibligraphy can be added.
     For example, whena  video or a tutorial is followed, a user can review it,
     leave their thoughts about it etc.
     """
 
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
 
     def __str__(self):
@@ -131,15 +119,11 @@ class BibliographyType(AbstractType):
     ...
 
 
-class Bibliography(models.Model):
+class Bibliography(AbstractType):
     """
     Links to the source of the information
     """
 
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     authors = models.ManyToManyField(Author, verbose_name=_("Authors"), blank=True)
     publication_date = models.DateField(
         verbose_name=_("Publication date"), blank=True, null=True
@@ -152,11 +136,7 @@ class Bibliography(models.Model):
         return str(self.name)
 
 
-class CheatSheet(models.Model):
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
+class CheatSheet(AbstractType):
     bibliography = models.ManyToManyField(
         Bibliography, verbose_name=_("Bibliography"), blank=True
     )
@@ -164,15 +144,11 @@ class CheatSheet(models.Model):
     link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
 
 
-class Technology(models.Model):
+class Technology(AbstractType):
     """
     Stores the information about a technology
     """
 
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     bibliography = models.ManyToManyField(
         Bibliography, verbose_name=_("Bibliography"), blank=True
     )
@@ -192,22 +168,20 @@ class ProjectType(AbstractType): ...
 class ProjectStatus(AbstractType): ...
 
 
-class Project(models.Model):
-    name = models.CharField(
-        verbose_name=_("Name"), max_length=255, blank=False, unique=True
-    )
-    description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
+class Project(AbstractType):
     project_type = models.ForeignKey(
         ProjectType,
         verbose_name=_("Project Type"),
         on_delete=models.CASCADE,
         blank=True,
+        null=True,
     )
     project_status = models.ForeignKey(
         ProjectStatus,
         verbose_name=_("Project Status"),
         on_delete=models.CASCADE,
         blank=True,
+        null=True,
     )
     review = models.ManyToManyField(Review, verbose_name=_("Review"), blank=True)
     link = models.ManyToManyField(Link, verbose_name=_("Link"), blank=True)
@@ -222,7 +196,7 @@ class Project(models.Model):
         return str(self.name)
 
 
-class Diary(models.Model):
+class Diary(AbstractType):
     """
     Stores the information about a diary
     """
@@ -245,7 +219,7 @@ class Diary(models.Model):
         return str(self.name)
 
 
-class DiaryEntry(models.Model):
+class DiaryEntry(AbstractType):
     """
     Stores the information about a diary entry
     """
