@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.db.models import UniqueConstraint, Q
 
 
 class AbstractType(models.Model):
@@ -16,18 +17,29 @@ class AbstractType(models.Model):
     )
     description = models.TextField(verbose_name=_("Description"), blank=True, null=True)
     icon = models.ImageField(verbose_name=_("Image"), blank=True, null=True)
-    model_custom_name = models.CharField(
-        verbose_name=_("Model custom name"), blank=True
-    )
 
     def __str__(self):
         return str(self.name)
 
-    def save(self, *args, **kwargs):
-        if not self.model_custom_name:
-            self.name = self.__class__.__name__
+    @classmethod
+    def model_name(cls):
+        from learou.app.models import CustomModelNameCollection, CustomModelName
 
-        super().save(*args, **kwargs)
+        custom_collection_qs = CustomModelNameCollection.objects.filter(is_active=True)
+
+        if not custom_collection_qs:
+            return cls.__name__
+
+        custom_collection = custom_collection_qs.first()
+
+        custom_model_name_qs = CustomModelName.objects.filter(
+            model=cls.__name__, custom_model_name_collection=custom_collection
+        )
+
+        if not custom_model_name_qs:
+            return cls.__name__
+
+        return custom_model_name_qs.first().name
 
 
 class TaskType(AbstractType):
@@ -241,3 +253,58 @@ class DiaryEntry(AbstractType):
 
     def __str__(self):
         return str(self.name)
+
+
+class CustomModelNameCollection(AbstractType):
+    """
+    Used to customize the models naming
+    """
+
+    is_active = models.BooleanField(
+        verbose_name="Is active", default=False, blank=False, null=False
+    )
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(
+                fields=("is_active",),
+                condition=Q(is_active=True),
+                name="unique_active_value",
+            )
+        ]
+
+
+class CustomModelName(AbstractType):
+    MODELS = (
+        ("AbstractType", "Abstract Type"),
+        ("TaskType", "Task Type"),
+        ("TaskStatus", "Task Status"),
+        ("Task", "Task"),
+        ("LinkType", "Link Type"),
+        ("Link", "Link"),
+        ("Review", "Review"),
+        ("Author", "Author"),
+        ("BibliographyType", "Bibliography Type"),
+        ("Bibliography", "Bibliography"),
+        ("CheatSheet", "Cheat Sheet"),
+        ("Technology", "Technology"),
+        ("ProjectType", "Project Type"),
+        ("ProjectStatus", "Project Status"),
+        ("Project", "Project"),
+        ("Diary", "Diary"),
+        ("DiaryEntry", "Diary Entry"),
+        ("CustomModelNameCollection", "Custom Model Name Collection"),
+        ("CustomModelName", "Custom Model Name"),
+    )
+    model = models.CharField(
+        verbose_name="Model", blank=False, null=False, choices=MODELS
+    )
+    custom_model_name_collection = models.ForeignKey(
+        to=CustomModelNameCollection, on_delete=models.CASCADE, blank=False, null=False
+    )
+
+    class Meta:
+        unique_together = ("model", "custom_model_name_collection")
+
+    def __str__(self):
+        return f"{self.custom_model_name_collection.name} - {self.model}"
