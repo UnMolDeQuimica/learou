@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
@@ -104,17 +105,41 @@ class HTMXTemplateMixin:
         return super().get_template_names()
 
     def form_valid(self, form):
-        is_create = not bool(getattr(self, "object", None) and self.object.pk)
-        response = super().form_valid(form)
+        try:
+            is_create = not bool(getattr(self, "object", None) and self.object.pk)
+            response = super().form_valid(form)
 
-        if not self.request.htmx:
-            return response
-        if is_create:
-            redirect_url = reverse(f"{self.base_url}_detail", args=[self.object.pk])
+            if not self.request.htmx:
+                return response
+
+            if is_create:
+                return self.create_response()
+
+            return self.update_response()
+        except Exception as request_error:
+            messages.warning(self.request, f"An error occurred: {request_error}")
+            messages.info(
+                self.request,
+                "Before trying again, check if your item was created or updated",
+            )
+            redirect_url = self.request.headers["Referer"]
             htmx_response = HttpResponse()
             htmx_response["HX-Redirect"] = redirect_url
+
             return htmx_response
 
+    def get_success_url(self):
+        return reverse_lazy(self.success_url, kwargs={"pk": self.object.pk})
+
+    def create_response(self):
+        redirect_url = reverse(f"{self.base_url}_detail", args=[self.object.pk])
+        htmx_response = HttpResponse()
+        htmx_response["HX-Redirect"] = redirect_url
+        messages.success(self.request, "Your item was successfully created!")
+
+        return htmx_response
+
+    def update_response(self):
         context = {
             self.context_object_name: self.object,
             "list_url": f"{self.base_url}_list",
@@ -123,10 +148,9 @@ class HTMXTemplateMixin:
             "create_url": f"{self.base_url}_create",
             "delete_url": f"{self.base_url}_delete",
         }
-        return render(self.request, self.template_name, context)
 
-    def get_success_url(self):
-        return reverse_lazy(self.success_url, kwargs={"pk": self.object.pk})
+        messages.success(self.request, "Your item was successfully updated!")
+        return render(self.request, self.template_name, context)
 
 
 class DeleteViewMixin(PermissionsMixin, HTMXTemplateMixin, DeleteView):
@@ -137,12 +161,25 @@ class DeleteViewMixin(PermissionsMixin, HTMXTemplateMixin, DeleteView):
         return reverse(self.base_url + "_list")
 
     def form_valid(self, form):
-        if not self.request.htmx:
-            return super().form_valid(form)
+        try:
+            if not self.request.htmx:
+                return super().form_valid(form)
 
-        self.delete(self.request)
+            self.delete(self.request)
+            messages.success(self.request, "The deletion was succesful")
+            return HttpResponse(headers={"HX-Redirect": self.get_success_url()})
 
-        return HttpResponse(headers={"HX-Redirect": self.get_success_url()})
+        except Exception as request_error:
+            messages.warning(self.request, f"An error occurred: {request_error}")
+            messages.info(
+                self.request,
+                "Before trying again, check if your item was deleted",
+            )
+            redirect_url = self.request.headers["Referer"]
+            htmx_response = HttpResponse()
+            htmx_response["HX-Redirect"] = redirect_url
+
+            return htmx_response
 
 
 # ------------------
@@ -305,7 +342,10 @@ class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView): ...
 
 
 class ProjectTypeUpdateView(
-    BaseProjectTypeViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+    BaseProjectTypeViewMixin,
+    HTMXTemplateMixin,
+    PermissionsMixin,
+    UpdateView,
 ):
     form_class = forms.ProjectTypeForm
     template_name = "app/partials/base_fields.html"
