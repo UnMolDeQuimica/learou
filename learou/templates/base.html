@@ -33,6 +33,15 @@
     <body class="min-h-screen flex flex-col" >
       {% include "header.html" %}
       <section class="flex-1  pt-10 min-h-screen">
+          {% if messages %}
+            <div class="flex flex-row justify-center items-center">
+              <ul class="messages ">
+                {% for message in messages %}
+                  <li class="alert alert-{{ message.tags }} max-w-xs">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
           {% block content %}{% endblock %}
       </section>
 
