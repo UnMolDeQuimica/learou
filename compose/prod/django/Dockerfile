@@ -89,7 +89,7 @@ RUN chown -R django:django ${APP_HOME}
 USER django
 
 RUN DATABASE_URL="" \
-  DJANGO_SETTINGS_MODULE="learou.settings.base" 
+  DJANGO_SETTINGS_MODULE="learou.settings.production" 
   # python manage.py compilemessages
 
 ENTRYPOINT ["/entrypoint"]
