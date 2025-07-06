@@ -208,3 +208,6 @@ static/css/*
 
 # Ignore docker files
 *.django
+
+# Ignore prod files
+*/.production/*

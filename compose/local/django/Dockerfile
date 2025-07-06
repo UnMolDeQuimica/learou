@@ -1,4 +1,3 @@
-
 # Use an official Python runtime based on Debian 12 "bookworm" as a parent image.
 FROM python:3.12-slim-bookworm
 
