@@ -283,6 +283,12 @@ class BaseTaskStatusViewMixin(BaseViewMixin):
     model_name = "Task Status"
 
 
+class BaseMilestoneViewMixin(BaseViewMixin):
+    model = models.Milestone
+    base_url = "milestone"
+    model_name = "Milestone"
+
+
 # ------------------
 # LIST VIEWS
 # ------------------
@@ -334,6 +340,9 @@ class TaskTypeListView(BaseTaskTypeViewMixin, GenericListView): ...
 
 
 class TaskStatusListView(BaseTaskStatusViewMixin, GenericListView): ...
+
+
+class MilestoneListView(BaseMilestoneViewMixin, GenericListView): ...
 
 
 # ------------------
@@ -490,6 +499,14 @@ class TaskStatusUpdateView(
     htmx_template_name = "app/partials/base_form.html"
 
 
+class MilestoneUpdateView(
+    BaseMilestoneViewMixin, HTMXTemplateMixin, PermissionsMixin, UpdateView
+):
+    form_class = forms.MilestoneForm
+    template_name = "app/partials/base_fields.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
 # ------------------
 # DETAIL VIEWS
 # ------------------
@@ -585,6 +602,9 @@ class TaskTypeDetailView(BaseTaskTypeViewMixin, HTMXTemplateMixin, DetailView): 
 
 
 class TaskStatusDetailView(BaseTaskStatusViewMixin, HTMXTemplateMixin, DetailView): ...
+
+
+class MilestoneDetailView(BaseMilestoneViewMixin, HTMXTemplateMixin, DetailView): ...
 
 
 # ------------------
@@ -720,6 +740,14 @@ class DiaryEntryCreateView(
     htmx_template_name = "app/partials/base_form.html"
 
 
+class MilestoneCreateView(
+    BaseMilestoneViewMixin, HTMXTemplateMixin, PermissionsMixin, CreateView
+):
+    form_class = forms.MilestoneForm
+    template_name = "app/base_detail.html"
+    htmx_template_name = "app/partials/base_form.html"
+
+
 # ------------------
 # DELETE VIEWS
 # ------------------
@@ -771,3 +799,6 @@ class DiaryDeleteView(BaseDiaryViewMixin, DeleteViewMixin): ...
 
 
 class DiaryEntryDeleteView(BaseDiaryEntryViewMixin, DeleteViewMixin): ...
+
+
+class MilestoneDeleteView(BaseMilestoneViewMixin, DeleteViewMixin): ...

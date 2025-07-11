@@ -97,3 +97,9 @@ class DiaryEntryForm(forms.ModelForm):
     class Meta:
         model = models.DiaryEntry
         fields = "__all__"
+
+
+class MilestoneForm(forms.ModelForm):
+    class Meta:
+        model = models.Milestone
+        fields = "__all__"

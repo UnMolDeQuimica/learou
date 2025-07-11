@@ -149,6 +149,10 @@ class Bibliography(AbstractType):
 
 
 class CheatSheet(AbstractType):
+    """
+    Used to summarize the useful tips or procedures from a review.
+    """
+
     bibliography = models.ManyToManyField(
         Bibliography, verbose_name=_("Bibliography"), blank=True
     )
@@ -174,13 +178,37 @@ class Technology(AbstractType):
         return str(self.name)
 
 
-class ProjectType(AbstractType): ...
+class ProjectType(AbstractType):
+    """
+    Describes the different project types:
+        - Reading a book.
+        - Creating an app.
+        - Learning a new skill
+        - ...
+    """
+
+    ...
 
 
-class ProjectStatus(AbstractType): ...
+class ProjectStatus(AbstractType):
+    """
+    Describes the status of a project:
+        - In progress
+        - New
+        - To Be Done
+        - ...
+    """
+
+    ...
 
 
 class Project(AbstractType):
+    """
+    A project is something you want to achieve.
+    Maybe making an app or reading a book or
+    learning to play a new song.
+    """
+
     project_type = models.ForeignKey(
         ProjectType,
         verbose_name=_("Project Type"),
@@ -203,9 +231,54 @@ class Project(AbstractType):
     tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
     updated_at = models.DateField(verbose_name=_("Updated at"), auto_now=True)
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="subproject",
+        verbose_name=_("Parent"),
+    )
 
     def __str__(self):
         return str(self.name)
+
+    @property
+    def project_tasks(self):
+        return self.tasks.all()
+
+    @property
+    def subprojects_tasks(self):
+        return Task.objects.filter(projects_set__parent=self).distinct()
+
+    @property
+    def milestones_tasks(self):
+        return Task.objects.filter(milestones_set__project=self).distinct()
+
+    @property
+    def all_tasks(self):
+        project_tasks = self.project_tasks
+        subprojects_tasks = self.subprojects_tasks
+        milestones_tasks = self.milestones_tasks
+        return project_tasks.union(subprojects_tasks).union(milestones_tasks).distinct()
+
+
+class Milestone(AbstractType):
+    """
+    A milestone describes a big part of a project.
+    Example: Learning how to play a guitar is a project.
+    Learning a new technique is a milestone.
+    Learning a new scale and how to improvise using it might be another milestone.
+    """
+
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        blank=False,
+        null=False,
+        verbose_name=_("Project"),
+    )
+    tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
 
 
 class Diary(AbstractType):
@@ -295,6 +368,7 @@ class CustomModelName(AbstractType):
         ("DiaryEntry", "Diary Entry"),
         ("CustomModelNameCollection", "Custom Model Name Collection"),
         ("CustomModelName", "Custom Model Name"),
+        ("Milestone", "Milestone"),
     )
     model = models.CharField(
         verbose_name="Model", blank=False, null=False, choices=MODELS
