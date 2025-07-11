@@ -178,13 +178,37 @@ class Technology(AbstractType):
         return str(self.name)
 
 
-class ProjectType(AbstractType): ...
+class ProjectType(AbstractType):
+    """
+    Describes the different project types:
+        - Reading a book.
+        - Creating an app.
+        - Learning a new skill
+        - ...
+    """
+
+    ...
 
 
-class ProjectStatus(AbstractType): ...
+class ProjectStatus(AbstractType):
+    """
+    Describes the status of a project:
+        - In progress
+        - New
+        - To Be Done
+        - ...
+    """
+
+    ...
 
 
 class Project(AbstractType):
+    """
+    A project is something you want to achieve.
+    Maybe making an app or reading a book or
+    learning to play a new song.
+    """
+
     project_type = models.ForeignKey(
         ProjectType,
         verbose_name=_("Project Type"),
