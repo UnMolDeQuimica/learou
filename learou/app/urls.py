@@ -28,6 +28,7 @@ list_views = [
     views.ProjectListView,
     views.DiaryListView,
     views.DiaryEntryListView,
+    views.MilestoneListView,
 ]
 
 list_urls = [make_view_url(view=view, view_type="list") for view in list_views]
@@ -49,6 +50,7 @@ detail_views = [
     views.ProjectDetailView,
     views.DiaryDetailView,
     views.DiaryEntryDetailView,
+    views.MilestoneDetailView,
 ]
 
 detail_urls = [
@@ -73,6 +75,7 @@ update_views = [
     views.ProjectUpdateView,
     views.DiaryUpdateView,
     views.DiaryEntryUpdateView,
+    views.MilestoneUpdateView,
 ]
 
 update_urls = [
@@ -97,6 +100,7 @@ create_views = [
     views.ProjectCreateView,
     views.DiaryCreateView,
     views.DiaryEntryCreateView,
+    views.MilestoneCreateView,
 ]
 
 create_urls = [
@@ -121,6 +125,7 @@ delete_views = [
     views.ProjectDeleteView,
     views.DiaryDeleteView,
     views.DiaryEntryDeleteView,
+    views.MilestoneDeleteView,
 ]
 
 delete_urls = [
