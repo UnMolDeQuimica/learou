@@ -231,6 +231,14 @@ class Project(AbstractType):
     tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
     created_at = models.DateField(verbose_name=_("Created at"), auto_now_add=True)
     updated_at = models.DateField(verbose_name=_("Updated at"), auto_now=True)
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="subproject",
+        verbose_name=_("Parent"),
+    )
 
     def __str__(self):
         return str(self.name)
