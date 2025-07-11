@@ -244,6 +244,24 @@ class Project(AbstractType):
         return str(self.name)
 
 
+class Milestone(AbstractType):
+    """
+    A milestone describes a big part of a project.
+    Example: Learning how to play a guitar is a project.
+    Learning a new technique is a milestone.
+    Learning a new scale and how to improvise using it might be another milestone.
+    """
+
+    project = ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        blank=False,
+        null=False,
+        verbose_name=_("Project"),
+    )
+    tasks = models.ManyToManyField(Task, verbose_name=_("Task"), blank=True)
+
+
 class Diary(AbstractType):
     """
     Stores the information about a diary
