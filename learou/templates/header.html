@@ -51,7 +51,33 @@
   <div class="navbar-end">
     <label class="swap swap-rotate w-userbar-trigger">
       <!-- this hidden checkbox controls the state -->
-      <input type="checkbox" class="theme-controller" value="night" />
+      <input type="checkbox" id="theme-toggle" />
+<script>
+  const checkbox = document.getElementById('theme-toggle');
+  const getOsPrefersDark = () =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Set initial theme based on OS preference
+  function setInitialTheme() {
+    const saved = localStorage.getItem('theme');
+    let theme;
+    if (saved) {
+      theme = saved;
+    } else {
+      theme = getOsPrefersDark() ? 'night' : 'cupcake';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+    checkbox.checked = (theme === 'night');
+  }
+  setInitialTheme();
+
+  // Toggle handler
+  checkbox.addEventListener('change', (e) => {
+    const newTheme = e.target.checked ? 'night' : 'cupcake';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
       <!-- sun icon -->
       <svg
         class="swap-off h-10 w-10 fill-current"
