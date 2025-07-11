@@ -368,6 +368,7 @@ class CustomModelName(AbstractType):
         ("DiaryEntry", "Diary Entry"),
         ("CustomModelNameCollection", "Custom Model Name Collection"),
         ("CustomModelName", "Custom Model Name"),
+        ("Milestone", "Milestone"),
     )
     model = models.CharField(
         verbose_name="Model", blank=False, null=False, choices=MODELS
