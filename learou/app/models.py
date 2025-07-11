@@ -243,6 +243,25 @@ class Project(AbstractType):
     def __str__(self):
         return str(self.name)
 
+    @property
+    def project_tasks(self):
+        return self.tasks.all()
+
+    @property
+    def subprojects_tasks(self):
+        return Task.objects.filter(projects_set__parent=self).distinct()
+
+    @property
+    def milestones_tasks(self):
+        return Task.objects.filter(milestones_set__project=self).distinct()
+
+    @property
+    def all_tasks(self):
+        project_tasks = self.project_tasks
+        subprojects_tasks = self.subprojects_tasks
+        milestones_tasks = self.milestones_tasks
+        return project_tasks.union(subprojects_tasks).union(milestones_tasks).distinct()
+
 
 class Milestone(AbstractType):
     """
@@ -252,7 +271,7 @@ class Milestone(AbstractType):
     Learning a new scale and how to improvise using it might be another milestone.
     """
 
-    project = ForeignKey(
+    project = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
         blank=False,
