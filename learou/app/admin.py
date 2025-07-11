@@ -18,6 +18,7 @@ from learou.app.models import (
     DiaryEntry,
     CustomModelNameCollection,
     CustomModelName,
+    Milestone,
 )
 
 
@@ -91,3 +92,7 @@ class CustomModelNameCollectionAdmin(admin.ModelAdmin): ...
 
 @admin.register(CustomModelName)
 class CustomModelNameAdmin(admin.ModelAdmin): ...
+
+
+@admin.register(Milestone)
+class MilestoneAdmin(admin.ModelAdmin): ...
