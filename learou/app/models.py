@@ -149,6 +149,10 @@ class Bibliography(AbstractType):
 
 
 class CheatSheet(AbstractType):
+    """
+    Used to summarize the useful tips or procedures from a review.
+    """
+
     bibliography = models.ManyToManyField(
         Bibliography, verbose_name=_("Bibliography"), blank=True
     )
