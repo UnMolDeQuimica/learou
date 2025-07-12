@@ -28,24 +28,12 @@
           aria-label="close sidebar"
           class="drawer-overlay"
         ></label>
-        <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          <!-- Sidebar content here -->
-          <li><a href="/">Homepage</a></li>
-          <li><a href="/features">Features</a></li>
-          {% comment %}
-          <li><a target="_blank">Portfolio</a></li>
-          {% endcomment %}
-          <li>
-            <a target="_blank" href="https://github.com/UnMolDeQuimica/learou"
-              >GitHub</a
-            >
-          </li>
-        </ul>
+        {% include "sidebar.html" %}
       </div>
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost text-xl">LEAROU</a>
+    <a class="btn btn-ghost text-xl" href="/" >LEAROU</a>
   </div>
   <!-- Theme toggle start -->
   <div class="navbar-end">
