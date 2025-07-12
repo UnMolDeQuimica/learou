@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+  <script>
+    window.location.href = "/";
+  </script>
+{% endif %}
+{% block breadcrumbs %}
+<div class="breadcrumbs text-sm max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl">
+  <ul>
+    {% include "app/partials/base_breadcrumb.html" with  breadcrumb_url="home" breadcrumb_name="Home" icon="home" %}
+  </ul>
+</div>
+{% endblock breadcrumbs %}
+<div class="max-w-300 mx-1 md:mx-15 py-5 px-10 rounded-xl" id="object-fields">
+<h2>{% trans "Log In" %}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-primary">{% trans "Log In"%}</button>
+  <button class="btn btn-error" onclick="window.location.href='/'">{% trans "Cancel"%}</button>
+</form>
+</div>
+{% endblock content %}

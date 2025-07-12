@@ -7,3 +7,7 @@ class Home(TemplateView):
 
 class Features(TemplateView):
     template_name = "features.html"
+
+
+class LogOut(TemplateView):
+    template_name = "registration/logout.html"

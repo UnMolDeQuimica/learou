@@ -1,0 +1,19 @@
+{% load i18n %}
+<ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+  <!-- Sidebar content here -->
+  <li><a href="/">Homepage</a></li>
+  <li><a href="/features">Features</a></li>
+  {% comment %}
+  <li><a target="_blank">Portfolio</a></li>
+  {% endcomment %}
+  <li>
+    <a target="_blank" href="https://github.com/UnMolDeQuimica/learou"
+      >GitHub</a
+    >
+  </li>
+  {% if user.is_authenticated %}
+    <li><a href="/log-out/">{% trans "Log Out" %}</a></li>
+  {% else %}
+    <li><a href="/accounts/login/">{% trans "Login" %}</a></li>
+  {% endif %}
+</ul>
