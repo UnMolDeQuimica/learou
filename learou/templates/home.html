@@ -1,17 +1,49 @@
 {% extends "base.html" %} {% block content %} {% load i18n %}
-<div class="bg-accent mx-5 md:mx-15 p-5 pt-10 pb-10 rounded-xl">
-    <div class="flex-col pt-3">
-      <div>
-        <h1 class="text-6xl font-bold mb-2">{% trans "Learou" %}</h1>
-        <h2 class="text-4xl font-bold mt-4 mb-3">{% trans "Show your growth" %}</h2>
+<div class="bg-radial-[at_25%_25%] from-secondary to-info -mt-10 min-h-150 pt-10">
+  
+<div class="mx-5 md:mx-15 lg:mx-25 xl:mx-55 p-5 pb-10 rounded-xl pt-10">
+    <div class="flex flex-col pt-3 items-center justify-center text-center">
+        <h1 class="text-6xl font-bold mt-4 mb-3 lg:text-7xl md:mb-20 xl:text-8xl">{% trans "Show your growth" %}</h1>
+        <div class="flex md:mb-20">
+          <span class="loading loading-ring loading-xs"></span>
+          <span class="loading loading-ring loading-sm"></span>
+          <span class="loading loading-ring loading-md"></span>
+          <span class="loading loading-ring loading-lg"></span>
+          <span class="loading loading-ring loading-xl duration-[3000ms]"></span>
+          <span class="loading loading-ring loading-lg"></span>
+          <span class="loading loading-ring loading-md"></span>
+          <span class="loading loading-ring loading-sm"></span>
+          <span class="loading loading-ring loading-xs"></span>
+        </div>
         <p class="my-3 font-bold">
           Develop skills, build projects, learn new things and track your
           progress.
         </p>
         <a href="https://github.com/UnMolDeQuimica/learou" target="_blank"
-          ><button class="btn btn-primary">Get Started</button></a
+          ><button class="btn btn-primary mt-10">Get Started</button></a
         >
-      </div>
   </div>
+</div>
+
+</div>
+<div class="bg-warning flex flex-col items-center justify-center min-h-150 ">
+ <p class="text-4xl font-bold mb-2 sm:text-6xl underline text" >DEVELOP SKILLS</p> 
+<div class="skeleton h-120 w-7/8"></div>
+</div>
+<div class="bg-linear-350 from-info  to-accent flex flex-col items-center justify-center min-h-150 ">
+ <p class="text-4xl font-bold mb-2 sm:text-6xl underline text-white" >BUILD PROJECTS</p> 
+<div class="skeleton h-120 w-7/8"></div>
+</div>
+<div class="bg-primary flex flex-col items-center justify-center min-h-150 text-primary-content">
+ <p class="text-4xl font-bold mb-2 sm:text-6xl underline" >LEARN</p> 
+<div class="skeleton h-120 w-7/8"></div>
+</div>
+<div class="bg-linear-to-r from-error to-secondary-content flex flex-col items-center justify-center min-h-150 text-error-content">
+ <p class="text-4xl font-bold mb-2 sm:text-6xl underline" >TRACK YOUR PROGRESS</p> 
+<div class="skeleton h-120 w-7/8"></div>
+</div>
+<div class="bg-success flex flex-col items-center justify-center min-h-150 text-success-content">
+ <p class="text-4xl font-bold mb-2 sm:text-6xl underline" >SHOW YOUR GROWTH</p> 
+<div class="skeleton h-120 w-7/8"></div>
 </div>
 {% endblock content %}
