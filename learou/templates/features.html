@@ -1,34 +1,67 @@
 {% extends "base.html" %} {% block content %} {% load i18n %}
-<div class="bg-accent mx-5 md:mx-15 p-5 pt-10 pb-10 rounded-xl">
-    <div class="flex-col pt-3">
-      <div>
-        <h1 class="text-6xl font-bold mb-2">{% trans "Features" %}</h1>
+<div class="mx-5 md:mx-25 lg:mx-35 xl:mx-85">
+  
+
+  <div class="bg-base  p-5 pt-10 pb-10 rounded-xl">
+      <div class="flex-col pt-3">
+          <h2 class="text-6xl font-bold mb-2 text-base-content">{% trans "Features" %}</h1>
       </div>
   </div>
-</div>
-<div class="flex-col mx-5 md:mx-15 p-5 pt-10 pb-10 ">
- <ul class="list bg-base-100 rounded-box shadow-md">
-   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Projects</li>
-     <li class="list-row"><a href="/api/project/">{% trans "Project" %}</a></li>
-     <li class="list-row"><a href="/api/project_type/">{% trans "Project Type" %}</a></li>
-     <li class="list-row"><a href="/api/project_status/">{% trans "Project Status" %}</a></li>
-     <li class="list-row"><a href="/api/technology/">{% trans "Technology" %}</a></li>
-     <li class="list-row"><a href="/api/milestone/">{% trans "Milestone" %}</a></li>
-   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Tasks</li>
-     <li class="list-row"><a href="/api/task/">{% trans "Task" %}</a></li>
-     <li class="list-row"><a href="/api/task_type/">{% trans "Task Type" %}</a></li>
-     <li class="list-row"><a href="/api/task_status/">{% trans "Task Status" %}</a></li>
-   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Bibliography</li>
-     <li class="list-row"><a href="/api/bibliography/">{% trans "Bibliography" %}</a></li>
-     <li class="list-row"><a href="/api/bibliography_type/">{% trans "Bibliography Type" %}</a></li>
-     <li class="list-row"><a href="/api/link/">{% trans "Link" %}</a></li>
-     <li class="list-row"><a href="/api/link_type/">{% trans "Link Type" %}</a></li>
-     <li class="list-row"><a href="/api/author/">{% trans "Author" %}</a></li>
-   <li class="p-4 pb-2 text-3xl font-bold opacity-60 tracking-wide">Progress</li>
-     <li class="list-row"><a href="/api/diary/">{% trans "Diary" %}</a></li>
-     <li class="list-row"><a href="/api/diary_entry/">{% trans "Diary Entry" %}</a></li>
-     <li class="list-row"><a href="/api/review/">{% trans "Review" %}</a></li>
-     <li class="list-row"><a href="/api/cheatsheet/">{% trans "Cheat Sheet" %}</a></li>
-</ul>
+
+  <div class="flex flex-col 2xl:flex-row items-stretch justify-center">
+    <div class="flex flex-col h-full md:flex-row items-stretch justify-center">
+      <div class="card min-w-80 h-full card-xl shadow-sm m-10 mx-5">
+          <h3 class="card-title bg-primary text-primary-content p-3">{% trans "Projects" %}</h3>
+        <div class="card-body">
+          <p>{% trans "Learn something new. Build a new project. You name it, but you better do it!" %}</p>
+          <ul class="list">
+            <li class="list-row"><a href="/api/project/">{% trans "Project" %}</a></li>
+            <li class="list-row"><a href="/api/project_type/">{% trans "Project Type" %}</a></li>
+            <li class="list-row"><a href="/api/project_status/">{% trans "Project Status" %}</a></li>
+            <li class="list-row"><a href="/api/technology/">{% trans "Technology" %}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card min-w-80 h-full card-xl shadow-sm m-10 mx-5">
+          <h3 class="card-title bg-primary text-primary-content p-3">{% trans "Tasks" %}</h3>
+        <div class="card-body">
+          <p>{% trans "Plan your project, create a strategy and conquer your goals. Veni, vidi, vici!" %}</p>
+          <ul class="list">
+            <li class="list-row"><a href="/api/task/">{% trans "Task" %}</a></li>
+            <li class="list-row"><a href="/api/task_type/">{% trans "Task Type" %}</a></li>
+            <li class="list-row"><a href="/api/task_status/">{% trans "Task Status" %}</a></li>
+            <li class="list-row"><a href="/api/milestone/">{% trans "Milestone" %}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row h-full items-stretch justify-center">
+      <div class="card min-w-80 card-xl h-full shadow-sm m-10 mx-5">
+          <h3 class="card-title bg-primary text-primary-content p-3">{% trans "Bibliography" %}</h3>
+        <div class="card-body">
+          <p>{% trans "Remember where did you read that awesome quote? No? No problem! It is here!" %}</p>
+          <ul class="list">
+            <li class="list-row"><a href="/api/bibliography/">{% trans "Bibliography" %}</a></li>
+            <li class="list-row"><a href="/api/bibliography_type/">{% trans "Bibliography Type" %}</a></li>
+            <li class="list-row"><a href="/api/link/">{% trans "Link" %}</a></li>
+            <li class="list-row"><a href="/api/link_type/">{% trans "Link Type" %}</a></li>
+            <li class="list-row"><a href="/api/author/">{% trans "Author" %}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card min-w-80 card-xl h-full shadow-sm m-10 mx-5">
+          <h3 class="card-title bg-primary text-primary-content p-3">{% trans "Progress" %}</h3>
+        <div class="card-body">
+          <p>{% trans "Make your dreams come true but never forget where you did come from. That way, your past you will help your future self." %}</p>
+          <ul class="list">
+            <li class="list-row"><a href="/api/diary/">{% trans "Diary" %}</a></li>
+            <li class="list-row"><a href="/api/diary_entry/">{% trans "Diary Entry" %}</a></li>
+            <li class="list-row"><a href="/api/review/">{% trans "Review" %}</a></li>
+            <li class="list-row"><a href="/api/cheatsheet/">{% trans "Cheat Sheet" %}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock content %}

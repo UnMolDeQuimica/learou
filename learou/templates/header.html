@@ -1,5 +1,5 @@
 <!-- HEADER START -->
-<div class="navbar bg-base-300 shadow-sm">
+<div class="navbar bg-base-200 shadow-sm">
   <div class="navbar-start">
     <div class="drawer">
       <input id="left-drawer" type="checkbox" class="drawer-toggle" />
@@ -52,16 +52,16 @@
     if (saved) {
       theme = saved;
     } else {
-      theme = getOsPrefersDark() ? 'night' : 'cupcake';
+      theme = getOsPrefersDark() ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', theme);
-    checkbox.checked = (theme === 'night');
+    checkbox.checked = (theme === 'dark');
   }
   setInitialTheme();
 
   // Toggle handler
   checkbox.addEventListener('change', (e) => {
-    const newTheme = e.target.checked ? 'night' : 'cupcake';
+    const newTheme = e.target.checked ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   });
