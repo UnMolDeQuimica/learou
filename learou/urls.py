@@ -3,12 +3,11 @@ from django.urls import include, path
 from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
-from learou.views import Home, Features
+from learou.views import Home, Features, LogOut
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
@@ -16,6 +15,7 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("api/", include("learou.app.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 
@@ -37,4 +37,5 @@ urlpatterns = urlpatterns + [
     #    path("pages/", include(wagtail_urls)),
     path("", Home.as_view(), name="home"),
     path("features/", Features.as_view(), name="features"),
+    path("log-out/", LogOut.as_view(), name="log_out"),
 ]
